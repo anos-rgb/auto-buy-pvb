@@ -17,7 +17,7 @@ local Config = {
     SelectedItems = {},
     PurchaseCount = 0,
     MinimizedHeight = 40,
-    FullHeight = 450,
+    FullHeight = 320,
     IsMinimized = false
 }
 
@@ -387,9 +387,9 @@ local function createGUI()
     deselectAllCorner.CornerRadius = UDim.new(0, 8)
     deselectAllCorner.Parent = deselectAllBtn
     
-    -- Filter bar lebih kompak
+    -- Filter bar lebih kompak dan tinggi dikurangi
     local filterBar = Instance.new("Frame")
-    filterBar.Size = UDim2.new(1, -12, 0, 70)
+    filterBar.Size = UDim2.new(1, -12, 0, 55)
     filterBar.Position = UDim2.new(0, 6, 0, 86)
     filterBar.BackgroundColor3 = Color3.fromRGB(30, 30, 38)
     filterBar.BackgroundTransparency = 0.4
@@ -414,14 +414,14 @@ local function createGUI()
     filterTitle.Parent = filterBar
     
     local filterGrid = Instance.new("Frame")
-    filterGrid.Size = UDim2.new(1, -12, 0, 44)
-    filterGrid.Position = UDim2.new(0, 6, 0, 24)
+    filterGrid.Size = UDim2.new(1, -12, 0, 36)
+    filterGrid.Position = UDim2.new(0, 6, 0, 18)
     filterGrid.BackgroundTransparency = 1
     filterGrid.ZIndex = 4
     filterGrid.Parent = filterBar
     
     local gridLayout = Instance.new("UIGridLayout")
-    gridLayout.CellSize = UDim2.new(0.33, -4, 0, 20)
+    gridLayout.CellSize = UDim2.new(0.33, -4, 0, 16)
     gridLayout.CellPadding = UDim2.new(0, 4, 0, 4)
     gridLayout.SortOrder = Enum.SortOrder.LayoutOrder
     gridLayout.Parent = filterGrid
@@ -436,7 +436,7 @@ local function createGUI()
         rarityBtn.BorderSizePixel = 0
         rarityBtn.Text = rarity
         rarityBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        rarityBtn.TextSize = 9
+        rarityBtn.TextSize = 8
         rarityBtn.Font = Enum.Font.GothamBold
         rarityBtn.ZIndex = 5
         rarityBtn.LayoutOrder = i
@@ -449,10 +449,10 @@ local function createGUI()
         rarityButtons[rarity] = rarityBtn
     end
     
-    -- Scroll frame lebih kecil
+    -- Scroll frame lebih panjang untuk muat semua konten
     local scroll = Instance.new("ScrollingFrame")
-    scroll.Size = UDim2.new(1, -12, 0, 235)
-    scroll.Position = UDim2.new(0, 6, 0, 162)
+    scroll.Size = UDim2.new(1, -12, 0, 172)
+    scroll.Position = UDim2.new(0, 6, 0, 147)
     scroll.BackgroundColor3 = Color3.fromRGB(25, 25, 32)
     scroll.BackgroundTransparency = 0.5
     scroll.BorderSizePixel = 0
@@ -472,27 +472,27 @@ local function createGUI()
     scrollStroke.Parent = scroll
     
     local layout = Instance.new("UIListLayout")
-    layout.Padding = UDim.new(0, 4)
+    layout.Padding = UDim.new(0, 3)
     layout.SortOrder = Enum.SortOrder.LayoutOrder
     layout.Parent = scroll
     
     local padding = Instance.new("UIPadding")
-    padding.PaddingTop = UDim.new(0, 6)
-    padding.PaddingLeft = UDim.new(0, 6)
-    padding.PaddingRight = UDim.new(0, 6)
-    padding.PaddingBottom = UDim.new(0, 6)
+    padding.PaddingTop = UDim.new(0, 4)
+    padding.PaddingLeft = UDim.new(0, 4)
+    padding.PaddingRight = UDim.new(0, 4)
+    padding.PaddingBottom = UDim.new(0, 4)
     padding.Parent = scroll
     
     local itemButtons = {}
     
-    -- Item buttons lebih kecil
+    -- Item buttons lebih kecil dan compact
     local function addItemButton(itemData, category)
         local itemName = itemData.name
         local rarity = itemData.rarity
         local rarityColor = RarityColors[rarity]
         
         local btn = Instance.new("TextButton")
-        btn.Size = UDim2.new(1, -6, 0, 30)
+        btn.Size = UDim2.new(1, -6, 0, 26)
         btn.BackgroundColor3 = Color3.fromRGB(30, 35, 50)
         btn.BackgroundTransparency = 0.3
         btn.BorderSizePixel = 0
@@ -523,12 +523,12 @@ local function createGUI()
         rarityBarCorner.Parent = rarityBar
         
         local itemLabel = Instance.new("TextLabel")
-        itemLabel.Size = UDim2.new(1, -110, 1, 0)
-        itemLabel.Position = UDim2.new(0, 10, 0, 0)
+        itemLabel.Size = UDim2.new(1, -95, 1, 0)
+        itemLabel.Position = UDim2.new(0, 8, 0, 0)
         itemLabel.BackgroundTransparency = 1
         itemLabel.Text = itemName
         itemLabel.TextColor3 = Color3.fromRGB(220, 220, 220)
-        itemLabel.TextSize = 10
+        itemLabel.TextSize = 9
         itemLabel.Font = Enum.Font.Gotham
         itemLabel.TextXAlignment = Enum.TextXAlignment.Left
         itemLabel.TextTruncate = Enum.TextTruncate.AtEnd
@@ -536,14 +536,14 @@ local function createGUI()
         itemLabel.Parent = btn
         
         local rarityLabel = Instance.new("TextLabel")
-        rarityLabel.Size = UDim2.new(0, 50, 0, 18)
-        rarityLabel.Position = UDim2.new(1, -96, 0.5, -9)
+        rarityLabel.Size = UDim2.new(0, 44, 0, 16)
+        rarityLabel.Position = UDim2.new(1, -84, 0.5, -8)
         rarityLabel.BackgroundColor3 = rarityColor
         rarityLabel.BackgroundTransparency = 0.2
         rarityLabel.BorderSizePixel = 0
         rarityLabel.Text = rarity:upper()
         rarityLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        rarityLabel.TextSize = 8
+        rarityLabel.TextSize = 7
         rarityLabel.Font = Enum.Font.GothamBold
         rarityLabel.ZIndex = 5
         rarityLabel.Parent = btn
@@ -553,8 +553,8 @@ local function createGUI()
         rarityLabelCorner.Parent = rarityLabel
         
         local statusIndicator = Instance.new("Frame")
-        statusIndicator.Size = UDim2.new(0, 40, 0, 22)
-        statusIndicator.Position = UDim2.new(1, -44, 0.5, -11)
+        statusIndicator.Size = UDim2.new(0, 36, 0, 18)
+        statusIndicator.Position = UDim2.new(1, -38, 0.5, -9)
         statusIndicator.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
         statusIndicator.BackgroundTransparency = 0.2
         statusIndicator.BorderSizePixel = 0
@@ -570,7 +570,7 @@ local function createGUI()
         statusText.BackgroundTransparency = 1
         statusText.Text = "OFF"
         statusText.TextColor3 = Color3.fromRGB(255, 255, 255)
-        statusText.TextSize = 9
+        statusText.TextSize = 8
         statusText.Font = Enum.Font.GothamBold
         statusText.ZIndex = 6
         statusText.Parent = statusIndicator
@@ -621,7 +621,7 @@ local function createGUI()
     
     local function addCategory(text)
         local header = Instance.new("Frame")
-        header.Size = UDim2.new(1, -6, 0, 28)
+        header.Size = UDim2.new(1, -6, 0, 24)
         header.BackgroundColor3 = Color3.fromRGB(35, 40, 60)
         header.BackgroundTransparency = 0.2
         header.BorderSizePixel = 0
@@ -644,7 +644,7 @@ local function createGUI()
         label.BackgroundTransparency = 1
         label.Text = text
         label.TextColor3 = Color3.fromRGB(150, 200, 255)
-        label.TextSize = 11
+        label.TextSize = 10
         label.Font = Enum.Font.GothamBold
         label.TextXAlignment = Enum.TextXAlignment.Left
         label.ZIndex = 5
@@ -659,7 +659,7 @@ local function createGUI()
     end
     
     local spacer1 = Instance.new("Frame")
-    spacer1.Size = UDim2.new(1, -6, 0, 3)
+    spacer1.Size = UDim2.new(1, -6, 0, 2)
     spacer1.BackgroundTransparency = 1
     spacer1.Parent = scroll
     
@@ -668,7 +668,7 @@ local function createGUI()
         addItemButton(gear, "gear")
     end
     
-    scroll.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y + 12)
+    scroll.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y + 8)
     
     for rarity, btn in pairs(rarityButtons) do
         btn.MouseButton1Click:Connect(function()
@@ -715,10 +715,10 @@ local function createGUI()
         end
     end)
     
-    -- Toggle button lebih kecil
+    -- Toggle button di posisi fixed
     local toggleBtn = Instance.new("TextButton")
-    toggleBtn.Size = UDim2.new(1, -12, 0, 42)
-    toggleBtn.Position = UDim2.new(0, 6, 1, -48)
+    toggleBtn.Size = UDim2.new(1, -12, 0, 38)
+    toggleBtn.Position = UDim2.new(0, 6, 1, -44)
     toggleBtn.BackgroundColor3 = Color3.fromRGB(60, 70, 80)
     toggleBtn.BackgroundTransparency = 0.3
     toggleBtn.BorderSizePixel = 0
@@ -740,7 +740,7 @@ local function createGUI()
     toggleStroke.Parent = toggleBtn
     
     local padding2 = Instance.new("UIPadding")
-    padding2.PaddingBottom = UDim.new(0, 12)
+    padding2.PaddingBottom = UDim.new(0, 8)
     padding2.Parent = scroll
     
     toggleBtn.MouseButton1Click:Connect(function()
