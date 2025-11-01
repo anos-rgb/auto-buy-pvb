@@ -45,6 +45,16 @@ local RarityColors = {
 }
 
 local SeedItems = {
+    {name = "Cactus Seed", rarity = "Rare"},
+    {name = "Strawberry Seed", rarity = "Rare"},
+    {name = "Pumpkin Seed", rarity = "Epic"},
+    {name = "Sunflower Seed", rarity = "Epic"},
+    {name = "Dragon Fruit Seed", rarity = "Legendary"},
+    {name = "Eggplant Seed", rarity = "Legendary"},
+    {name = "Watermelon Seed", rarity = "Mythic"},
+    {name = "Grape Seed", rarity = "Mythic"},
+    {name = "Cocotank Seed", rarity = "Godly"},
+    {name = "Carnivorous Plant Seed", rarity = "Godly"},
     {name = "Mr Carrot Seed", rarity = "Secret"},
     {name = "Tomatrio Seed", rarity = "Secret"},
     {name = "Shroombino Seed", rarity = "Secret"},
@@ -288,9 +298,9 @@ local function createGUI()
     contentContainer.ZIndex = 2
     contentContainer.Parent = main
     
-    -- Status panel lebih kecil
+    -- Status panel dikecilkan lagi
     local statusPanel = Instance.new("Frame")
-    statusPanel.Size = UDim2.new(1, -12, 0, 38)
+    statusPanel.Size = UDim2.new(1, -12, 0, 32)
     statusPanel.Position = UDim2.new(0, 6, 0, 6)
     statusPanel.BackgroundColor3 = Color3.fromRGB(30, 30, 38)
     statusPanel.BackgroundTransparency = 0.4
@@ -309,33 +319,33 @@ local function createGUI()
     statusStroke.Parent = statusPanel
     
     local statusLabel = Instance.new("TextLabel")
-    statusLabel.Size = UDim2.new(1, -12, 0, 18)
-    statusLabel.Position = UDim2.new(0, 6, 0, 3)
+    statusLabel.Size = UDim2.new(1, -12, 0, 16)
+    statusLabel.Position = UDim2.new(0, 6, 0, 2)
     statusLabel.BackgroundTransparency = 1
-    statusLabel.Text = "⚫ Status: STOPPED"
+    statusLabel.Text = "⚫ STOPPED"
     statusLabel.TextColor3 = Color3.fromRGB(150, 150, 160)
-    statusLabel.TextSize = 11
+    statusLabel.TextSize = 10
     statusLabel.Font = Enum.Font.GothamBold
     statusLabel.TextXAlignment = Enum.TextXAlignment.Left
     statusLabel.ZIndex = 4
     statusLabel.Parent = statusPanel
     
     local speedLabel = Instance.new("TextLabel")
-    speedLabel.Size = UDim2.new(1, -12, 0, 16)
-    speedLabel.Position = UDim2.new(0, 6, 0, 20)
+    speedLabel.Size = UDim2.new(1, -12, 0, 14)
+    speedLabel.Position = UDim2.new(0, 6, 0, 16)
     speedLabel.BackgroundTransparency = 1
-    speedLabel.Text = "⚡ Speed: " .. math.floor(1/Config.BuyDelay) .. " items/s"
+    speedLabel.Text = "⚡ " .. math.floor(1/Config.BuyDelay) .. " items/s"
     speedLabel.TextColor3 = Color3.fromRGB(130, 130, 140)
-    speedLabel.TextSize = 10
+    speedLabel.TextSize = 9
     speedLabel.Font = Enum.Font.Gotham
     speedLabel.TextXAlignment = Enum.TextXAlignment.Left
     speedLabel.ZIndex = 4
     speedLabel.Parent = statusPanel
     
-    -- Actions bar lebih kecil
+    -- Actions bar lebih kecil lagi
     local actionsBar = Instance.new("Frame")
-    actionsBar.Size = UDim2.new(1, -12, 0, 30)
-    actionsBar.Position = UDim2.new(0, 6, 0, 50)
+    actionsBar.Size = UDim2.new(1, -12, 0, 26)
+    actionsBar.Position = UDim2.new(0, 6, 0, 44)
     actionsBar.BackgroundTransparency = 1
     actionsBar.ZIndex = 3
     actionsBar.Parent = contentContainer
@@ -352,7 +362,7 @@ local function createGUI()
     selectAllBtn.BorderSizePixel = 0
     selectAllBtn.Text = "✓ All"
     selectAllBtn.TextColor3 = Color3.fromRGB(200, 200, 210)
-    selectAllBtn.TextSize = 11
+    selectAllBtn.TextSize = 10
     selectAllBtn.Font = Enum.Font.GothamBold
     selectAllBtn.ZIndex = 4
     selectAllBtn.Parent = actionsBar
@@ -368,7 +378,7 @@ local function createGUI()
     deselectAllBtn.BorderSizePixel = 0
     deselectAllBtn.Text = "✕ Clear"
     deselectAllBtn.TextColor3 = Color3.fromRGB(200, 200, 210)
-    deselectAllBtn.TextSize = 11
+    deselectAllBtn.TextSize = 10
     deselectAllBtn.Font = Enum.Font.GothamBold
     deselectAllBtn.ZIndex = 4
     deselectAllBtn.Parent = actionsBar
@@ -377,10 +387,10 @@ local function createGUI()
     deselectAllCorner.CornerRadius = UDim.new(0, 8)
     deselectAllCorner.Parent = deselectAllBtn
     
-    -- Filter bar lebih kompak dan tinggi dikurangi
+    -- Filter bar dikecilkan drastis
     local filterBar = Instance.new("Frame")
-    filterBar.Size = UDim2.new(1, -12, 0, 55)
-    filterBar.Position = UDim2.new(0, 6, 0, 86)
+    filterBar.Size = UDim2.new(1, -12, 0, 46)
+    filterBar.Position = UDim2.new(0, 6, 0, 76)
     filterBar.BackgroundColor3 = Color3.fromRGB(30, 30, 38)
     filterBar.BackgroundTransparency = 0.4
     filterBar.BorderSizePixel = 0
@@ -392,26 +402,26 @@ local function createGUI()
     filterCorner.Parent = filterBar
     
     local filterTitle = Instance.new("TextLabel")
-    filterTitle.Size = UDim2.new(1, -8, 0, 20)
-    filterTitle.Position = UDim2.new(0, 6, 0, 3)
+    filterTitle.Size = UDim2.new(1, -8, 0, 16)
+    filterTitle.Position = UDim2.new(0, 6, 0, 2)
     filterTitle.BackgroundTransparency = 1
-    filterTitle.Text = "🎯 Quick Select"
+    filterTitle.Text = "🎯 Quick"
     filterTitle.TextColor3 = Color3.fromRGB(150, 150, 160)
-    filterTitle.TextSize = 10
+    filterTitle.TextSize = 9
     filterTitle.Font = Enum.Font.GothamBold
     filterTitle.TextXAlignment = Enum.TextXAlignment.Left
     filterTitle.ZIndex = 4
     filterTitle.Parent = filterBar
     
     local filterGrid = Instance.new("Frame")
-    filterGrid.Size = UDim2.new(1, -12, 0, 36)
-    filterGrid.Position = UDim2.new(0, 6, 0, 18)
+    filterGrid.Size = UDim2.new(1, -12, 0, 28)
+    filterGrid.Position = UDim2.new(0, 6, 0, 16)
     filterGrid.BackgroundTransparency = 1
     filterGrid.ZIndex = 4
     filterGrid.Parent = filterBar
     
     local gridLayout = Instance.new("UIGridLayout")
-    gridLayout.CellSize = UDim2.new(0.33, -4, 0, 16)
+    gridLayout.CellSize = UDim2.new(0.33, -4, 0, 12)
     gridLayout.CellPadding = UDim2.new(0, 4, 0, 4)
     gridLayout.SortOrder = Enum.SortOrder.LayoutOrder
     gridLayout.Parent = filterGrid
@@ -426,7 +436,7 @@ local function createGUI()
         rarityBtn.BorderSizePixel = 0
         rarityBtn.Text = rarity
         rarityBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        rarityBtn.TextSize = 8
+        rarityBtn.TextSize = 7
         rarityBtn.Font = Enum.Font.GothamBold
         rarityBtn.ZIndex = 5
         rarityBtn.LayoutOrder = i
@@ -439,10 +449,10 @@ local function createGUI()
         rarityButtons[rarity] = rarityBtn
     end
     
-    -- Scroll frame lebih panjang untuk muat semua konten
+    -- Scroll frame diperbesar untuk muat lebih banyak
     local scroll = Instance.new("ScrollingFrame")
-    scroll.Size = UDim2.new(1, -12, 0, 172)
-    scroll.Position = UDim2.new(0, 6, 0, 147)
+    scroll.Size = UDim2.new(1, -12, 0, 158)
+    scroll.Position = UDim2.new(0, 6, 0, 128)
     scroll.BackgroundColor3 = Color3.fromRGB(25, 25, 32)
     scroll.BackgroundTransparency = 0.5
     scroll.BorderSizePixel = 0
@@ -475,14 +485,14 @@ local function createGUI()
     
     local itemButtons = {}
     
-    -- Item buttons lebih kecil dan compact
+    -- Item buttons super compact
     local function addItemButton(itemData, category)
         local itemName = itemData.name
         local rarity = itemData.rarity
         local rarityColor = RarityColors[rarity]
         
         local btn = Instance.new("TextButton")
-        btn.Size = UDim2.new(1, -6, 0, 26)
+        btn.Size = UDim2.new(1, -6, 0, 22)
         btn.BackgroundColor3 = Color3.fromRGB(30, 35, 50)
         btn.BackgroundTransparency = 0.3
         btn.BorderSizePixel = 0
@@ -501,7 +511,7 @@ local function createGUI()
         btnStroke.Parent = btn
         
         local rarityBar = Instance.new("Frame")
-        rarityBar.Size = UDim2.new(0, 4, 1, 0)
+        rarityBar.Size = UDim2.new(0, 3, 1, 0)
         rarityBar.BackgroundColor3 = rarityColor
         rarityBar.BackgroundTransparency = 0.2
         rarityBar.BorderSizePixel = 0
@@ -518,7 +528,7 @@ local function createGUI()
         itemLabel.BackgroundTransparency = 1
         itemLabel.Text = itemName
         itemLabel.TextColor3 = Color3.fromRGB(220, 220, 220)
-        itemLabel.TextSize = 9
+        itemLabel.TextSize = 8
         itemLabel.Font = Enum.Font.Gotham
         itemLabel.TextXAlignment = Enum.TextXAlignment.Left
         itemLabel.TextTruncate = Enum.TextTruncate.AtEnd
@@ -526,14 +536,14 @@ local function createGUI()
         itemLabel.Parent = btn
         
         local rarityLabel = Instance.new("TextLabel")
-        rarityLabel.Size = UDim2.new(0, 44, 0, 16)
-        rarityLabel.Position = UDim2.new(1, -84, 0.5, -8)
+        rarityLabel.Size = UDim2.new(0, 38, 0, 14)
+        rarityLabel.Position = UDim2.new(1, -74, 0.5, -7)
         rarityLabel.BackgroundColor3 = rarityColor
         rarityLabel.BackgroundTransparency = 0.2
         rarityLabel.BorderSizePixel = 0
         rarityLabel.Text = rarity:upper()
         rarityLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        rarityLabel.TextSize = 7
+        rarityLabel.TextSize = 6
         rarityLabel.Font = Enum.Font.GothamBold
         rarityLabel.ZIndex = 5
         rarityLabel.Parent = btn
@@ -543,8 +553,8 @@ local function createGUI()
         rarityLabelCorner.Parent = rarityLabel
         
         local statusIndicator = Instance.new("Frame")
-        statusIndicator.Size = UDim2.new(0, 36, 0, 18)
-        statusIndicator.Position = UDim2.new(1, -38, 0.5, -9)
+        statusIndicator.Size = UDim2.new(0, 32, 0, 16)
+        statusIndicator.Position = UDim2.new(1, -34, 0.5, -8)
         statusIndicator.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
         statusIndicator.BackgroundTransparency = 0.2
         statusIndicator.BorderSizePixel = 0
@@ -560,7 +570,7 @@ local function createGUI()
         statusText.BackgroundTransparency = 1
         statusText.Text = "OFF"
         statusText.TextColor3 = Color3.fromRGB(255, 255, 255)
-        statusText.TextSize = 8
+        statusText.TextSize = 7
         statusText.Font = Enum.Font.GothamBold
         statusText.ZIndex = 6
         statusText.Parent = statusIndicator
@@ -611,7 +621,7 @@ local function createGUI()
     
     local function addCategory(text)
         local header = Instance.new("Frame")
-        header.Size = UDim2.new(1, -6, 0, 24)
+        header.Size = UDim2.new(1, -6, 0, 20)
         header.BackgroundColor3 = Color3.fromRGB(35, 40, 60)
         header.BackgroundTransparency = 0.2
         header.BorderSizePixel = 0
@@ -634,7 +644,7 @@ local function createGUI()
         label.BackgroundTransparency = 1
         label.Text = text
         label.TextColor3 = Color3.fromRGB(150, 200, 255)
-        label.TextSize = 10
+        label.TextSize = 9
         label.Font = Enum.Font.GothamBold
         label.TextXAlignment = Enum.TextXAlignment.Left
         label.ZIndex = 5
@@ -705,16 +715,16 @@ local function createGUI()
         end
     end)
     
-    -- Toggle button di posisi fixed
+    -- Toggle button tetap di bawah
     local toggleBtn = Instance.new("TextButton")
-    toggleBtn.Size = UDim2.new(1, -12, 0, 38)
-    toggleBtn.Position = UDim2.new(0, 6, 1, -44)
+    toggleBtn.Size = UDim2.new(1, -12, 0, 32)
+    toggleBtn.Position = UDim2.new(0, 6, 1, -38)
     toggleBtn.BackgroundColor3 = Color3.fromRGB(60, 70, 80)
     toggleBtn.BackgroundTransparency = 0.3
     toggleBtn.BorderSizePixel = 0
     toggleBtn.Text = "▶ START"
     toggleBtn.TextColor3 = Color3.fromRGB(200, 200, 210)
-    toggleBtn.TextSize = 13
+    toggleBtn.TextSize = 12
     toggleBtn.Font = Enum.Font.GothamBold
     toggleBtn.ZIndex = 10
     toggleBtn.Parent = contentContainer
@@ -740,13 +750,13 @@ local function createGUI()
             toggleBtn.Text = "⏸ STOP"
             tweenButton(toggleBtn, {BackgroundColor3 = Color3.fromRGB(90, 60, 60)})
             toggleStroke.Color = Color3.fromRGB(110, 80, 80)
-            statusLabel.Text = "🟢 Status: RUNNING"
+            statusLabel.Text = "🟢 RUNNING"
             statusLabel.TextColor3 = Color3.fromRGB(140, 160, 140)
         else
             toggleBtn.Text = "▶ START"
             tweenButton(toggleBtn, {BackgroundColor3 = Color3.fromRGB(60, 70, 80)})
             toggleStroke.Color = Color3.fromRGB(80, 90, 100)
-            statusLabel.Text = "⚫ Status: STOPPED"
+            statusLabel.Text = "⚫ STOPPED"
             statusLabel.TextColor3 = Color3.fromRGB(150, 150, 160)
         end
     end)
@@ -815,7 +825,7 @@ local function createGUI()
     local dragInput, mousePos, framePos
     
     titleBar.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
             mousePos = input.Position
             framePos = main.Position
@@ -829,8 +839,14 @@ local function createGUI()
     end)
     
     titleBar.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement then
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
             dragInput = input
+        end
+    end)
+    
+    titleBar.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.Touch then
+            dragging = false
         end
     end)
     
@@ -899,4 +915,3 @@ end
 startAutoBuy()
 
 print("✅ Ready! Optimized for Redmi 9A")
-
