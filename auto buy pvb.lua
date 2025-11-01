@@ -151,11 +151,11 @@ local function createGUI()
     gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     gui.Parent = playerGui
     
-    -- Ukuran dikecilkan dari 380x640 menjadi 280x450
+    -- Ukuran dikecilkan dari 380x640 menjadi 280x380 untuk HP kecil
     local main = Instance.new("Frame")
     main.Name = "MainFrame"
     main.Size = UDim2.new(0, 280, 0, Config.FullHeight)
-    main.Position = UDim2.new(0.5, -140, 0.5, -225)
+    main.Position = UDim2.new(0.5, -140, 0, 10)
     main.BackgroundColor3 = Color3.fromRGB(18, 18, 22)
     main.BackgroundTransparency = 0.15
     main.BorderSizePixel = 0
