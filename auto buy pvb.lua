@@ -59,7 +59,8 @@ local SeedItems = {
     {name = "Tomatrio Seed", rarity = "Secret"},
     {name = "Shroombino Seed", rarity = "Secret"},
     {name = "Mango Seed", rarity = "Secret"},
-    {name = "King Limone Seed", rarity = "Secret"}
+    {name = "King Limone Seed", rarity = "Secret"},
+    {name = "Starfruit Seed", rarity = "Secret"}
 }
 
 local GearItems = {
@@ -894,4 +895,5 @@ if not success then
 end
 
 startAutoBuy()
+
 print("✅ Ready!")
