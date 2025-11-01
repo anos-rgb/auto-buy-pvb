@@ -45,16 +45,6 @@ local RarityColors = {
 }
 
 local SeedItems = {
-    {name = "Cactus Seed", rarity = "Rare"},
-    {name = "Strawberry Seed", rarity = "Rare"},
-    {name = "Pumpkin Seed", rarity = "Epic"},
-    {name = "Sunflower Seed", rarity = "Epic"},
-    {name = "Dragon Fruit Seed", rarity = "Legendary"},
-    {name = "Eggplant Seed", rarity = "Legendary"},
-    {name = "Watermelon Seed", rarity = "Mythic"},
-    {name = "Grape Seed", rarity = "Mythic"},
-    {name = "Cocotank Seed", rarity = "Godly"},
-    {name = "Carnivorous Plant Seed", rarity = "Godly"},
     {name = "Mr Carrot Seed", rarity = "Secret"},
     {name = "Tomatrio Seed", rarity = "Secret"},
     {name = "Shroombino Seed", rarity = "Secret"},
@@ -909,3 +899,4 @@ end
 startAutoBuy()
 
 print("✅ Ready! Optimized for Redmi 9A")
+
