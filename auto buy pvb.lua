@@ -16,8 +16,8 @@ local Config = {
     BuyDelay = 0.08,
     SelectedItems = {},
     PurchaseCount = 0,
-    MinimizedHeight = 50,
-    FullHeight = 640,
+    MinimizedHeight = 40,
+    FullHeight = 450,
     IsMinimized = false
 }
 
@@ -151,10 +151,11 @@ local function createGUI()
     gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     gui.Parent = playerGui
     
+    -- Ukuran dikecilkan dari 380x640 menjadi 280x450
     local main = Instance.new("Frame")
     main.Name = "MainFrame"
-    main.Size = UDim2.new(0, 380, 0, Config.FullHeight)
-    main.Position = UDim2.new(0.5, -190, 0.5, -320)
+    main.Size = UDim2.new(0, 280, 0, Config.FullHeight)
+    main.Position = UDim2.new(0.5, -140, 0.5, -225)
     main.BackgroundColor3 = Color3.fromRGB(18, 18, 22)
     main.BackgroundTransparency = 0.15
     main.BorderSizePixel = 0
@@ -162,7 +163,7 @@ local function createGUI()
     main.Parent = gui
     
     local mainCorner = Instance.new("UICorner")
-    mainCorner.CornerRadius = UDim.new(0, 15)
+    mainCorner.CornerRadius = UDim.new(0, 12)
     mainCorner.Parent = main
     
     local blur = Instance.new("Frame")
@@ -174,7 +175,7 @@ local function createGUI()
     blur.Parent = main
     
     local blurCorner = Instance.new("UICorner")
-    blurCorner.CornerRadius = UDim.new(0, 15)
+    blurCorner.CornerRadius = UDim.new(0, 12)
     blurCorner.Parent = blur
     
     local border = Instance.new("UIStroke")
@@ -183,9 +184,10 @@ local function createGUI()
     border.Transparency = 0.6
     border.Parent = main
     
+    -- Title bar dikecilkan dari 55px menjadi 40px
     local titleBar = Instance.new("Frame")
     titleBar.Name = "TitleBar"
-    titleBar.Size = UDim2.new(1, 0, 0, 55)
+    titleBar.Size = UDim2.new(1, 0, 0, 40)
     titleBar.BackgroundColor3 = Color3.fromRGB(28, 28, 35)
     titleBar.BackgroundTransparency = 0.3
     titleBar.BorderSizePixel = 0
@@ -193,33 +195,34 @@ local function createGUI()
     titleBar.Parent = main
     
     local titleCorner = Instance.new("UICorner")
-    titleCorner.CornerRadius = UDim.new(0, 15)
+    titleCorner.CornerRadius = UDim.new(0, 12)
     titleCorner.Parent = titleBar
     
     local titleFix = Instance.new("Frame")
-    titleFix.Size = UDim2.new(1, 0, 0, 15)
-    titleFix.Position = UDim2.new(0, 0, 1, -15)
+    titleFix.Size = UDim2.new(1, 0, 0, 12)
+    titleFix.Position = UDim2.new(0, 0, 1, -12)
     titleFix.BackgroundColor3 = Color3.fromRGB(28, 28, 35)
     titleFix.BackgroundTransparency = 0.3
     titleFix.BorderSizePixel = 0
     titleFix.ZIndex = 3
     titleFix.Parent = titleBar
     
+    -- Label ANOS lebih kecil
     local anosLabel = Instance.new("TextLabel")
-    anosLabel.Size = UDim2.new(0, 80, 0, 30)
-    anosLabel.Position = UDim2.new(0, 15, 0, 12)
+    anosLabel.Size = UDim2.new(0, 55, 0, 24)
+    anosLabel.Position = UDim2.new(0, 8, 0, 8)
     anosLabel.BackgroundColor3 = Color3.fromRGB(60, 60, 70)
     anosLabel.BackgroundTransparency = 0.3
     anosLabel.BorderSizePixel = 0
     anosLabel.Text = "ANOS"
     anosLabel.TextColor3 = Color3.fromRGB(200, 200, 210)
-    anosLabel.TextSize = 18
+    anosLabel.TextSize = 13
     anosLabel.Font = Enum.Font.GothamBold
     anosLabel.ZIndex = 4
     anosLabel.Parent = titleBar
     
     local anosCorner = Instance.new("UICorner")
-    anosCorner.CornerRadius = UDim.new(0, 8)
+    anosCorner.CornerRadius = UDim.new(0, 6)
     anosCorner.Parent = anosLabel
     
     local anosStroke = Instance.new("UIStroke")
@@ -228,74 +231,77 @@ local function createGUI()
     anosStroke.Transparency = 0.6
     anosStroke.Parent = anosLabel
     
+    -- Title lebih kecil
     local title = Instance.new("TextLabel")
-    title.Size = UDim2.new(1, -210, 1, 0)
-    title.Position = UDim2.new(0, 100, 0, 0)
+    title.Size = UDim2.new(1, -145, 1, 0)
+    title.Position = UDim2.new(0, 68, 0, 0)
     title.BackgroundTransparency = 1
-    title.Text = "AUTO BUY PVB"
+    title.Text = "AUTO BUY"
     title.TextColor3 = Color3.fromRGB(200, 200, 210)
-    title.TextSize = 18
+    title.TextSize = 13
     title.Font = Enum.Font.GothamBold
     title.TextXAlignment = Enum.TextXAlignment.Left
     title.ZIndex = 4
     title.Parent = titleBar
     
+    -- Control buttons lebih kecil
     local controlBtns = Instance.new("Frame")
-    controlBtns.Size = UDim2.new(0, 100, 0, 35)
-    controlBtns.Position = UDim2.new(1, -110, 0, 10)
+    controlBtns.Size = UDim2.new(0, 68, 0, 26)
+    controlBtns.Position = UDim2.new(1, -75, 0, 7)
     controlBtns.BackgroundTransparency = 1
     controlBtns.ZIndex = 4
     controlBtns.Parent = titleBar
     
     local btnLayout = Instance.new("UIListLayout")
     btnLayout.FillDirection = Enum.FillDirection.Horizontal
-    btnLayout.Padding = UDim.new(0, 8)
+    btnLayout.Padding = UDim.new(0, 6)
     btnLayout.Parent = controlBtns
     
     local minimizeBtn = Instance.new("TextButton")
-    minimizeBtn.Size = UDim2.new(0, 35, 0, 35)
+    minimizeBtn.Size = UDim2.new(0, 26, 0, 26)
     minimizeBtn.BackgroundColor3 = Color3.fromRGB(70, 70, 80)
     minimizeBtn.BackgroundTransparency = 0.3
     minimizeBtn.BorderSizePixel = 0
     minimizeBtn.Text = "─"
     minimizeBtn.TextColor3 = Color3.fromRGB(200, 200, 210)
-    minimizeBtn.TextSize = 20
+    minimizeBtn.TextSize = 16
     minimizeBtn.Font = Enum.Font.GothamBold
     minimizeBtn.ZIndex = 5
     minimizeBtn.Parent = controlBtns
     
     local minCorner = Instance.new("UICorner")
-    minCorner.CornerRadius = UDim.new(0, 8)
+    minCorner.CornerRadius = UDim.new(0, 6)
     minCorner.Parent = minimizeBtn
     
     local closeBtn = Instance.new("TextButton")
-    closeBtn.Size = UDim2.new(0, 35, 0, 35)
+    closeBtn.Size = UDim2.new(0, 26, 0, 26)
     closeBtn.BackgroundColor3 = Color3.fromRGB(90, 60, 60)
     closeBtn.BackgroundTransparency = 0.3
     closeBtn.BorderSizePixel = 0
     closeBtn.Text = "×"
     closeBtn.TextColor3 = Color3.fromRGB(200, 200, 210)
-    closeBtn.TextSize = 22
+    closeBtn.TextSize = 18
     closeBtn.Font = Enum.Font.GothamBold
     closeBtn.ZIndex = 5
     closeBtn.Parent = controlBtns
     
     local closeCorner = Instance.new("UICorner")
-    closeCorner.CornerRadius = UDim.new(0, 8)
+    closeCorner.CornerRadius = UDim.new(0, 6)
     closeCorner.Parent = closeBtn
     
     local contentContainer = Instance.new("Frame")
     contentContainer.Name = "ContentContainer"
-    contentContainer.Size = UDim2.new(1, 0, 1, -55)
-    contentContainer.Position = UDim2.new(0, 0, 0, 55)
+    contentContainer.Size = UDim2.new(1, 0, 1, -40)
+    contentContainer.Position = UDim2.new(0, 0, 0, 40)
     contentContainer.BackgroundTransparency = 1
     contentContainer.ClipsDescendants = true
     contentContainer.ZIndex = 2
     contentContainer.Parent = main
     
+    -- Status panel lebih kecil
     local statusPanel = Instance.new("Frame")
-    statusPanel.Size = UDim2.new(1, -20, 0, 50)
-    statusPanel.Position = UDim2.new(0, 10, 0, 10)
+    statusPanel.Size = UDim2.new(1, -12, 0, 38)
+    statusPanel.Position = UDim2.new(0, 6, 0, 6)
     statusPanel.BackgroundColor3 = Color3.fromRGB(30, 30, 38)
     statusPanel.BackgroundTransparency = 0.4
     statusPanel.BorderSizePixel = 0
@@ -303,7 +309,7 @@ local function createGUI()
     statusPanel.Parent = contentContainer
     
     local statusCorner = Instance.new("UICorner")
-    statusCorner.CornerRadius = UDim.new(0, 12)
+    statusCorner.CornerRadius = UDim.new(0, 8)
     statusCorner.Parent = statusPanel
     
     local statusStroke = Instance.new("UIStroke")
@@ -313,76 +319,78 @@ local function createGUI()
     statusStroke.Parent = statusPanel
     
     local statusLabel = Instance.new("TextLabel")
-    statusLabel.Size = UDim2.new(1, -20, 0, 24)
-    statusLabel.Position = UDim2.new(0, 10, 0, 5)
+    statusLabel.Size = UDim2.new(1, -12, 0, 18)
+    statusLabel.Position = UDim2.new(0, 6, 0, 3)
     statusLabel.BackgroundTransparency = 1
     statusLabel.Text = "⚫ Status: STOPPED"
     statusLabel.TextColor3 = Color3.fromRGB(150, 150, 160)
-    statusLabel.TextSize = 15
+    statusLabel.TextSize = 11
     statusLabel.Font = Enum.Font.GothamBold
     statusLabel.TextXAlignment = Enum.TextXAlignment.Left
     statusLabel.ZIndex = 4
     statusLabel.Parent = statusPanel
     
     local speedLabel = Instance.new("TextLabel")
-    speedLabel.Size = UDim2.new(1, -20, 0, 20)
-    speedLabel.Position = UDim2.new(0, 10, 0, 27)
+    speedLabel.Size = UDim2.new(1, -12, 0, 16)
+    speedLabel.Position = UDim2.new(0, 6, 0, 20)
     speedLabel.BackgroundTransparency = 1
     speedLabel.Text = "⚡ Speed: " .. math.floor(1/Config.BuyDelay) .. " items/s"
     speedLabel.TextColor3 = Color3.fromRGB(130, 130, 140)
-    speedLabel.TextSize = 13
+    speedLabel.TextSize = 10
     speedLabel.Font = Enum.Font.Gotham
     speedLabel.TextXAlignment = Enum.TextXAlignment.Left
     speedLabel.ZIndex = 4
     speedLabel.Parent = statusPanel
     
+    -- Actions bar lebih kecil
     local actionsBar = Instance.new("Frame")
-    actionsBar.Size = UDim2.new(1, -20, 0, 38)
-    actionsBar.Position = UDim2.new(0, 10, 0, 70)
+    actionsBar.Size = UDim2.new(1, -12, 0, 30)
+    actionsBar.Position = UDim2.new(0, 6, 0, 50)
     actionsBar.BackgroundTransparency = 1
     actionsBar.ZIndex = 3
     actionsBar.Parent = contentContainer
     
     local actionsLayout = Instance.new("UIListLayout")
     actionsLayout.FillDirection = Enum.FillDirection.Horizontal
-    actionsLayout.Padding = UDim.new(0, 8)
+    actionsLayout.Padding = UDim.new(0, 6)
     actionsLayout.Parent = actionsBar
     
     local selectAllBtn = Instance.new("TextButton")
-    selectAllBtn.Size = UDim2.new(0.5, -4, 1, 0)
+    selectAllBtn.Size = UDim2.new(0.5, -3, 1, 0)
     selectAllBtn.BackgroundColor3 = Color3.fromRGB(60, 70, 80)
     selectAllBtn.BackgroundTransparency = 0.3
     selectAllBtn.BorderSizePixel = 0
-    selectAllBtn.Text = "✓ Select All"
+    selectAllBtn.Text = "✓ All"
     selectAllBtn.TextColor3 = Color3.fromRGB(200, 200, 210)
-    selectAllBtn.TextSize = 13
+    selectAllBtn.TextSize = 11
     selectAllBtn.Font = Enum.Font.GothamBold
     selectAllBtn.ZIndex = 4
     selectAllBtn.Parent = actionsBar
     
     local selectAllCorner = Instance.new("UICorner")
-    selectAllCorner.CornerRadius = UDim.new(0, 10)
+    selectAllCorner.CornerRadius = UDim.new(0, 8)
     selectAllCorner.Parent = selectAllBtn
     
     local deselectAllBtn = Instance.new("TextButton")
-    deselectAllBtn.Size = UDim2.new(0.5, -4, 1, 0)
+    deselectAllBtn.Size = UDim2.new(0.5, -3, 1, 0)
     deselectAllBtn.BackgroundColor3 = Color3.fromRGB(80, 60, 60)
     deselectAllBtn.BackgroundTransparency = 0.3
     deselectAllBtn.BorderSizePixel = 0
-    deselectAllBtn.Text = "✕ Deselect All"
+    deselectAllBtn.Text = "✕ Clear"
     deselectAllBtn.TextColor3 = Color3.fromRGB(200, 200, 210)
-    deselectAllBtn.TextSize = 13
+    deselectAllBtn.TextSize = 11
     deselectAllBtn.Font = Enum.Font.GothamBold
     deselectAllBtn.ZIndex = 4
     deselectAllBtn.Parent = actionsBar
     
     local deselectAllCorner = Instance.new("UICorner")
-    deselectAllCorner.CornerRadius = UDim.new(0, 10)
+    deselectAllCorner.CornerRadius = UDim.new(0, 8)
     deselectAllCorner.Parent = deselectAllBtn
     
+    -- Filter bar lebih kompak
     local filterBar = Instance.new("Frame")
-    filterBar.Size = UDim2.new(1, -20, 0, 85)
-    filterBar.Position = UDim2.new(0, 10, 0, 118)
+    filterBar.Size = UDim2.new(1, -12, 0, 70)
+    filterBar.Position = UDim2.new(0, 6, 0, 86)
     filterBar.BackgroundColor3 = Color3.fromRGB(30, 30, 38)
     filterBar.BackgroundTransparency = 0.4
     filterBar.BorderSizePixel = 0
@@ -390,31 +398,31 @@ local function createGUI()
     filterBar.Parent = contentContainer
     
     local filterCorner = Instance.new("UICorner")
-    filterCorner.CornerRadius = UDim.new(0, 12)
+    filterCorner.CornerRadius = UDim.new(0, 8)
     filterCorner.Parent = filterBar
     
     local filterTitle = Instance.new("TextLabel")
-    filterTitle.Size = UDim2.new(1, -10, 0, 25)
-    filterTitle.Position = UDim2.new(0, 10, 0, 5)
+    filterTitle.Size = UDim2.new(1, -8, 0, 20)
+    filterTitle.Position = UDim2.new(0, 6, 0, 3)
     filterTitle.BackgroundTransparency = 1
-    filterTitle.Text = "🎯 Quick Select by Rarity"
+    filterTitle.Text = "🎯 Quick Select"
     filterTitle.TextColor3 = Color3.fromRGB(150, 150, 160)
-    filterTitle.TextSize = 13
+    filterTitle.TextSize = 10
     filterTitle.Font = Enum.Font.GothamBold
     filterTitle.TextXAlignment = Enum.TextXAlignment.Left
     filterTitle.ZIndex = 4
     filterTitle.Parent = filterBar
     
     local filterGrid = Instance.new("Frame")
-    filterGrid.Size = UDim2.new(1, -20, 0, 50)
-    filterGrid.Position = UDim2.new(0, 10, 0, 30)
+    filterGrid.Size = UDim2.new(1, -12, 0, 44)
+    filterGrid.Position = UDim2.new(0, 6, 0, 24)
     filterGrid.BackgroundTransparency = 1
     filterGrid.ZIndex = 4
     filterGrid.Parent = filterBar
     
     local gridLayout = Instance.new("UIGridLayout")
-    gridLayout.CellSize = UDim2.new(0.33, -5, 0, 23)
-    gridLayout.CellPadding = UDim2.new(0, 5, 0, 4)
+    gridLayout.CellSize = UDim2.new(0.33, -4, 0, 20)
+    gridLayout.CellPadding = UDim2.new(0, 4, 0, 4)
     gridLayout.SortOrder = Enum.SortOrder.LayoutOrder
     gridLayout.Parent = filterGrid
     
@@ -428,32 +436,33 @@ local function createGUI()
         rarityBtn.BorderSizePixel = 0
         rarityBtn.Text = rarity
         rarityBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        rarityBtn.TextSize = 11
+        rarityBtn.TextSize = 9
         rarityBtn.Font = Enum.Font.GothamBold
         rarityBtn.ZIndex = 5
         rarityBtn.LayoutOrder = i
         rarityBtn.Parent = filterGrid
         
         local rarityCorner = Instance.new("UICorner")
-        rarityCorner.CornerRadius = UDim.new(0, 8)
+        rarityCorner.CornerRadius = UDim.new(0, 6)
         rarityCorner.Parent = rarityBtn
         
         rarityButtons[rarity] = rarityBtn
     end
     
+    -- Scroll frame lebih kecil
     local scroll = Instance.new("ScrollingFrame")
-    scroll.Size = UDim2.new(1, -20, 0, 320)
-    scroll.Position = UDim2.new(0, 10, 0, 213)
+    scroll.Size = UDim2.new(1, -12, 0, 235)
+    scroll.Position = UDim2.new(0, 6, 0, 162)
     scroll.BackgroundColor3 = Color3.fromRGB(25, 25, 32)
     scroll.BackgroundTransparency = 0.5
     scroll.BorderSizePixel = 0
-    scroll.ScrollBarThickness = 4
+    scroll.ScrollBarThickness = 3
     scroll.ScrollBarImageColor3 = Color3.fromRGB(80, 80, 90)
     scroll.ZIndex = 3
     scroll.Parent = contentContainer
     
     local scrollCorner = Instance.new("UICorner")
-    scrollCorner.CornerRadius = UDim.new(0, 12)
+    scrollCorner.CornerRadius = UDim.new(0, 8)
     scrollCorner.Parent = scroll
     
     local scrollStroke = Instance.new("UIStroke")
@@ -463,26 +472,27 @@ local function createGUI()
     scrollStroke.Parent = scroll
     
     local layout = Instance.new("UIListLayout")
-    layout.Padding = UDim.new(0, 6)
+    layout.Padding = UDim.new(0, 4)
     layout.SortOrder = Enum.SortOrder.LayoutOrder
     layout.Parent = scroll
     
     local padding = Instance.new("UIPadding")
-    padding.PaddingTop = UDim.new(0, 10)
-    padding.PaddingLeft = UDim.new(0, 10)
-    padding.PaddingRight = UDim.new(0, 10)
-    padding.PaddingBottom = UDim.new(0, 10)
+    padding.PaddingTop = UDim.new(0, 6)
+    padding.PaddingLeft = UDim.new(0, 6)
+    padding.PaddingRight = UDim.new(0, 6)
+    padding.PaddingBottom = UDim.new(0, 6)
     padding.Parent = scroll
     
     local itemButtons = {}
     
+    -- Item buttons lebih kecil
     local function addItemButton(itemData, category)
         local itemName = itemData.name
         local rarity = itemData.rarity
         local rarityColor = RarityColors[rarity]
         
         local btn = Instance.new("TextButton")
-        btn.Size = UDim2.new(1, -10, 0, 38)
+        btn.Size = UDim2.new(1, -6, 0, 30)
         btn.BackgroundColor3 = Color3.fromRGB(30, 35, 50)
         btn.BackgroundTransparency = 0.3
         btn.BorderSizePixel = 0
@@ -491,17 +501,17 @@ local function createGUI()
         btn.Parent = scroll
         
         local btnCorner = Instance.new("UICorner")
-        btnCorner.CornerRadius = UDim.new(0, 10)
+        btnCorner.CornerRadius = UDim.new(0, 8)
         btnCorner.Parent = btn
         
         local btnStroke = Instance.new("UIStroke")
         btnStroke.Color = rarityColor
-        btnStroke.Thickness = 1.5
+        btnStroke.Thickness = 1
         btnStroke.Transparency = 0.6
         btnStroke.Parent = btn
         
         local rarityBar = Instance.new("Frame")
-        rarityBar.Size = UDim2.new(0, 5, 1, 0)
+        rarityBar.Size = UDim2.new(0, 4, 1, 0)
         rarityBar.BackgroundColor3 = rarityColor
         rarityBar.BackgroundTransparency = 0.2
         rarityBar.BorderSizePixel = 0
@@ -509,41 +519,42 @@ local function createGUI()
         rarityBar.Parent = btn
         
         local rarityBarCorner = Instance.new("UICorner")
-        rarityBarCorner.CornerRadius = UDim.new(0, 10)
+        rarityBarCorner.CornerRadius = UDim.new(0, 8)
         rarityBarCorner.Parent = rarityBar
         
         local itemLabel = Instance.new("TextLabel")
-        itemLabel.Size = UDim2.new(1, -90, 1, 0)
-        itemLabel.Position = UDim2.new(0, 15, 0, 0)
+        itemLabel.Size = UDim2.new(1, -110, 1, 0)
+        itemLabel.Position = UDim2.new(0, 10, 0, 0)
         itemLabel.BackgroundTransparency = 1
         itemLabel.Text = itemName
         itemLabel.TextColor3 = Color3.fromRGB(220, 220, 220)
-        itemLabel.TextSize = 13
+        itemLabel.TextSize = 10
         itemLabel.Font = Enum.Font.Gotham
         itemLabel.TextXAlignment = Enum.TextXAlignment.Left
+        itemLabel.TextTruncate = Enum.TextTruncate.AtEnd
         itemLabel.ZIndex = 5
         itemLabel.Parent = btn
         
         local rarityLabel = Instance.new("TextLabel")
-        rarityLabel.Size = UDim2.new(0, 70, 0, 22)
-        rarityLabel.Position = UDim2.new(1, -138, 0.5, -11)
+        rarityLabel.Size = UDim2.new(0, 50, 0, 18)
+        rarityLabel.Position = UDim2.new(1, -96, 0.5, -9)
         rarityLabel.BackgroundColor3 = rarityColor
         rarityLabel.BackgroundTransparency = 0.2
         rarityLabel.BorderSizePixel = 0
         rarityLabel.Text = rarity:upper()
         rarityLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        rarityLabel.TextSize = 10
+        rarityLabel.TextSize = 8
         rarityLabel.Font = Enum.Font.GothamBold
         rarityLabel.ZIndex = 5
         rarityLabel.Parent = btn
         
         local rarityLabelCorner = Instance.new("UICorner")
-        rarityLabelCorner.CornerRadius = UDim.new(0, 7)
+        rarityLabelCorner.CornerRadius = UDim.new(0, 5)
         rarityLabelCorner.Parent = rarityLabel
         
         local statusIndicator = Instance.new("Frame")
-        statusIndicator.Size = UDim2.new(0, 55, 0, 28)
-        statusIndicator.Position = UDim2.new(1, -63, 0.5, -14)
+        statusIndicator.Size = UDim2.new(0, 40, 0, 22)
+        statusIndicator.Position = UDim2.new(1, -44, 0.5, -11)
         statusIndicator.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
         statusIndicator.BackgroundTransparency = 0.2
         statusIndicator.BorderSizePixel = 0
@@ -551,7 +562,7 @@ local function createGUI()
         statusIndicator.Parent = btn
         
         local statusCorner = Instance.new("UICorner")
-        statusCorner.CornerRadius = UDim.new(0, 7)
+        statusCorner.CornerRadius = UDim.new(0, 5)
         statusCorner.Parent = statusIndicator
         
         local statusText = Instance.new("TextLabel")
@@ -559,7 +570,7 @@ local function createGUI()
         statusText.BackgroundTransparency = 1
         statusText.Text = "OFF"
         statusText.TextColor3 = Color3.fromRGB(255, 255, 255)
-        statusText.TextSize = 11
+        statusText.TextSize = 9
         statusText.Font = Enum.Font.GothamBold
         statusText.ZIndex = 6
         statusText.Parent = statusIndicator
@@ -610,7 +621,7 @@ local function createGUI()
     
     local function addCategory(text)
         local header = Instance.new("Frame")
-        header.Size = UDim2.new(1, -10, 0, 35)
+        header.Size = UDim2.new(1, -6, 0, 28)
         header.BackgroundColor3 = Color3.fromRGB(35, 40, 60)
         header.BackgroundTransparency = 0.2
         header.BorderSizePixel = 0
@@ -618,22 +629,22 @@ local function createGUI()
         header.Parent = scroll
         
         local headerCorner = Instance.new("UICorner")
-        headerCorner.CornerRadius = UDim.new(0, 10)
+        headerCorner.CornerRadius = UDim.new(0, 8)
         headerCorner.Parent = header
         
         local headerStroke = Instance.new("UIStroke")
         headerStroke.Color = Color3.fromRGB(150, 200, 255)
-        headerStroke.Thickness = 1.5
+        headerStroke.Thickness = 1
         headerStroke.Transparency = 0.5
         headerStroke.Parent = header
         
         local label = Instance.new("TextLabel")
-        label.Size = UDim2.new(1, -20, 1, 0)
-        label.Position = UDim2.new(0, 10, 0, 0)
+        label.Size = UDim2.new(1, -12, 1, 0)
+        label.Position = UDim2.new(0, 6, 0, 0)
         label.BackgroundTransparency = 1
         label.Text = text
         label.TextColor3 = Color3.fromRGB(150, 200, 255)
-        label.TextSize = 15
+        label.TextSize = 11
         label.Font = Enum.Font.GothamBold
         label.TextXAlignment = Enum.TextXAlignment.Left
         label.ZIndex = 5
@@ -648,7 +659,7 @@ local function createGUI()
     end
     
     local spacer1 = Instance.new("Frame")
-    spacer1.Size = UDim2.new(1, -10, 0, 5)
+    spacer1.Size = UDim2.new(1, -6, 0, 3)
     spacer1.BackgroundTransparency = 1
     spacer1.Parent = scroll
     
@@ -657,7 +668,7 @@ local function createGUI()
         addItemButton(gear, "gear")
     end
     
-    scroll.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y + 20)
+    scroll.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y + 12)
     
     for rarity, btn in pairs(rarityButtons) do
         btn.MouseButton1Click:Connect(function()
@@ -704,21 +715,22 @@ local function createGUI()
         end
     end)
     
+    -- Toggle button lebih kecil
     local toggleBtn = Instance.new("TextButton")
-    toggleBtn.Size = UDim2.new(1, -20, 0, 55)
-    toggleBtn.Position = UDim2.new(0, 10, 1, -65)
+    toggleBtn.Size = UDim2.new(1, -12, 0, 42)
+    toggleBtn.Position = UDim2.new(0, 6, 1, -48)
     toggleBtn.BackgroundColor3 = Color3.fromRGB(60, 70, 80)
     toggleBtn.BackgroundTransparency = 0.3
     toggleBtn.BorderSizePixel = 0
-    toggleBtn.Text = "▶ START AUTO BUY"
+    toggleBtn.Text = "▶ START"
     toggleBtn.TextColor3 = Color3.fromRGB(200, 200, 210)
-    toggleBtn.TextSize = 16
+    toggleBtn.TextSize = 13
     toggleBtn.Font = Enum.Font.GothamBold
     toggleBtn.ZIndex = 10
     toggleBtn.Parent = contentContainer
     
     local toggleCorner = Instance.new("UICorner")
-    toggleCorner.CornerRadius = UDim.new(0, 12)
+    toggleCorner.CornerRadius = UDim.new(0, 10)
     toggleCorner.Parent = toggleBtn
     
     local toggleStroke = Instance.new("UIStroke")
@@ -728,20 +740,20 @@ local function createGUI()
     toggleStroke.Parent = toggleBtn
     
     local padding2 = Instance.new("UIPadding")
-    padding2.PaddingBottom = UDim.new(0, 20)
+    padding2.PaddingBottom = UDim.new(0, 12)
     padding2.Parent = scroll
     
     toggleBtn.MouseButton1Click:Connect(function()
         Config.Enabled = not Config.Enabled
         
         if Config.Enabled then
-            toggleBtn.Text = "⏸ STOP AUTO BUY"
+            toggleBtn.Text = "⏸ STOP"
             tweenButton(toggleBtn, {BackgroundColor3 = Color3.fromRGB(90, 60, 60)})
             toggleStroke.Color = Color3.fromRGB(110, 80, 80)
             statusLabel.Text = "🟢 Status: RUNNING"
             statusLabel.TextColor3 = Color3.fromRGB(140, 160, 140)
         else
-            toggleBtn.Text = "▶ START AUTO BUY"
+            toggleBtn.Text = "▶ START"
             tweenButton(toggleBtn, {BackgroundColor3 = Color3.fromRGB(60, 70, 80)})
             toggleStroke.Color = Color3.fromRGB(80, 90, 100)
             statusLabel.Text = "⚫ Status: STOPPED"
@@ -753,11 +765,11 @@ local function createGUI()
         Config.IsMinimized = not Config.IsMinimized
         
         if Config.IsMinimized then
-            tweenSize(main, UDim2.new(0, 380, 0, Config.MinimizedHeight), 0.3)
+            tweenSize(main, UDim2.new(0, 280, 0, Config.MinimizedHeight), 0.3)
             minimizeBtn.Text = "+"
             contentContainer.Visible = false
         else
-            tweenSize(main, UDim2.new(0, 380, 0, Config.FullHeight), 0.3)
+            tweenSize(main, UDim2.new(0, 280, 0, Config.FullHeight), 0.3)
             minimizeBtn.Text = "─"
             task.wait(0.15)
             contentContainer.Visible = true
@@ -881,7 +893,7 @@ local function startAutoBuy()
 end
 
 print("╔════════════════════════════════════════╗")
-print("║   AUTO BUY PVB - ANOS EDITION V3.0    ║")
+print("║  AUTO BUY PVB - MOBILE OPTIMIZED V3.1 ║")
 print("╚════════════════════════════════════════╝")
 
 setupAntiAFK()
@@ -896,4 +908,4 @@ end
 
 startAutoBuy()
 
-print("✅ Ready!")
+print("✅ Ready! Optimized for Redmi 9A")
